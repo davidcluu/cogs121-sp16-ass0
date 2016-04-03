@@ -1,0 +1,26 @@
+body {
+  font-family: "Avenir","Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #aaa;
+  margin: 25px 10px;
+}
+
+/* 
+ * Form things
+ */
+.message-form {
+  max-width: 50%;
+  min-width: 200px;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.input-group-addon {
+  border-radius: 0;
+}
+
+/**
+ * Table
+ */
+

@@ -1,0 +1,31 @@
+{
+  "name": "cogs121-sp16-ass0",
+  "version": "1.0.0",
+  "description": "Assignment 0",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "mongod --dbpath dbpath --logpath log/mongod.log&",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidcluu/cogs121-sp16-ass0.git"
+  },
+  "author": "David Luu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidcluu/cogs121-sp16-ass0/issues"
+  },
+  "homepage": "https://github.com/davidcluu/cogs121-sp16-ass0#readme",
+  "dependencies": {
+    "express": "4.13.4",
+    "express-handlebars": "3.0.0",
+    "body-parser": "1.15.0",
+    "mongodb": "1.4.30",
+    "mongoose": "3.8.23"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }  
+}

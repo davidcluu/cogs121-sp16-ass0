@@ -3,32 +3,49 @@
 
 <head>
     <title></title>
+
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+
+    <!-- Boostrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="/css/global.css" rel="stylesheet">
 </head>
 
 <body>
-    <form action="/message" method="post">
-    	Email: <input type="text" name="email"><br>
-    	Content: <textarea name="content"></textarea><br>
+    <form class="message-form" action="/message" method="post">
+        <div class="input-group">
+            <input class="form-control form-name" type="text" name="email" placeholder="Email">
+            <span class="input-group-addon form-addon">
+                <i class="glyphicon glyphicon-envelope"></i>
+            </span>
+        </div>
+        <textarea class="form-control form-message" name="content" placeholder="Content"></textarea>
     	<input type="submit" value="Submit">
     </form>
     {{#if data}}
     <h3>My Messages</h3>
-    <table>
-    	<thead>
-    		<th>Email</th>
-    		<th>Content</th>
-    		<th>Date</th>
-    	</thead>
-    	<tbody>
-    		{{#each data}}
-    		<tr>
-    			<td>{{email}}</td>
-    			<td>{{content}}</td>
-    			<td>{{created}}</td>
-    		</tr>
-    		{{/each}}
-    	</tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+        	<thead>
+        		<th>Email</th>
+        		<th>Content</th>
+        		<th>Date</th>
+        	</thead>
+        	<tbody>
+        		{{#each data}}
+        		<tr>
+        			<td>{{email}}</td>
+        			<td>{{content}}</td>
+        			<td>{{created}}</td>
+        		</tr>
+        		{{/each}}
+        	</tbody>
+        </table>
+    </div>
     {{/if}}
 </body>
 
