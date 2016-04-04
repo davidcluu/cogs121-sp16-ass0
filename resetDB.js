@@ -4,10 +4,12 @@ var models = require('./models');
 /**
  * Connect to the database
  */
-var local_database_name = 'frank_app';
-var local_database_uri  = 'mongodb://localhost/' + local_database_name
-var database_uri = process.env.MONGOLAB_URI || local_database_uri
-mongoose.connect(database_uri);
+var db = mongoose.connection;
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/cogs121');
+db.on('error', console.error.bind(console, 'Mongo DB Connection Error:'));
+db.once('open', function(callback) {
+    console.log("Database connected successfully.");
+});
 
 /**
  * Reset database contents
@@ -17,4 +19,5 @@ models.Message
   .remove()
   .exec(function (){
     console.log("Success!");
+    mongoose.connection.close();
   });

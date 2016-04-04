@@ -1,51 +1,82 @@
-// Global variables
-var submitButton;
-
-
 // jQuery ready ()
 $(function(){
   $submitButton = $('#submitButton');
+  $emailInput = $('#emailInput');
+  $messageInput = $('#messageInput')
 
-  $('#emailInput').focusout(checkEmailInput);
-  $('#messageInput').focusout(checkMessageInput);
+  $emailInput.focusout(checkEmailInput);
+  $messageInput.focusout(checkMessageInput);
+  $submitButton.click(checkFormContents);
 });
 
 
-function checkEmailInput (e) {
-  var $this = $(this);
+function testEmailInput () {
+  return ($emailInput.val().indexOf('@') >= 0);
+}
 
-  if ($this.val().indexOf('@') >= 0) {
-    $this.parent().removeClass('error');
-    $submitButton.prop('disabled',false);
-    $this.css({
+
+function testMessageInput () {
+  return ($messageInput.val().length > 0);
+}
+
+
+function checkEmailInput () {
+  if ( testEmailInput() ) {
+    $emailInput.parent().removeClass('error');
+    if ( testMessageInput() ) {
+      $submitButton.prop('disabled',false);
+    }
+    $emailInput.css({
       'border-color': '#0f0'
     });
+    return true;
   }
   else {
-    $this.parent().addClass('error');
+    $emailInput.parent().addClass('error');
     $submitButton.prop('disabled',true);
-    $this.css({
+    $emailInput.css({
       'border-color': '#f00'
     });
+    return false;
   }
 }
 
 
-function checkMessageInput (e) {
-  var $this = $(this);
-
-  if ($this.val().length > 0) {
-    $this.parent().removeClass('error');
-    $submitButton.prop('disabled',false);
-    $this.css({
+function checkMessageInput () {
+  if ( testMessageInput() ) {
+    $messageInput.parent().removeClass('error');
+    if ( testEmailInput() ) {
+      $submitButton.prop('disabled',false);
+    }
+    $messageInput.css({
       'border-color': '#0f0'
     });
+    return true;
   }
   else {
-    $this.parent().addClass('error');
+    $messageInput.parent().addClass('error');
     $submitButton.prop('disabled',true);
-    $this.css({
+    $messageInput.css({
       'border-color': '#f00'
     });
+    return false;
   }
+}
+
+
+var flag = false;
+function checkFormContents (e) {
+  if (flag) {
+    flag = false;
+    return;
+  }
+
+  e.preventDefault();
+
+  if (checkEmailInput() || checkMessageInput()) {
+    return;
+  }
+
+  flag = true;
+  $(this).trigger('click');
 }
