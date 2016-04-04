@@ -1,26 +1,97 @@
 body {
   font-family: "Avenir","Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;
-  background-color: #aaa;
   margin: 25px 10px;
 }
 
 /* 
  * Form things
  */
+
 .message-form {
-  max-width: 50%;
-  min-width: 200px;
+  margin: 0 10%;
+  text-align: center;
 }
 
-.form-control {
-  border-radius: 0;
+.message-form div.input {
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-.input-group-addon {
-  border-radius: 0;
+.message-form .error-message {
+  float: right;
+  color: red;
+  visibility: hidden;
 }
 
-/**
- * Table
- */
+.message-form .input.error .error-message {
+  visibility: visible;
+}
 
+.message-form .form-control {
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid #bbb;
+  background-color: #eee;
+}
+
+.message-form input.form-control {
+  height: 44px;
+}
+
+.message-form textarea.form-control {
+  height: 70px;
+  padding-top: 14px;
+}
+
+.message-form .form-control:hover {
+  border-color: #ddd;
+}
+
+.message-form input.button {
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: none;
+  border: none;
+  padding: 10px 35px;
+  background-color: rgba(101,198,187, 1);
+  color: #fff;
+}
+
+.message-form input.button:hover {
+  background-color: rgba(101,198,187, 0.8);
+}
+
+.message-form input.button:disabled {
+  background-color: #aaa;
+}
+
+
+.message-area {
+  margin: 0 10%;
+  margin-top: 50px;
+}
+
+.table {
+  border: 1px solid #ddd;
+}
+
+.table thead tr th {
+  border: none;
+  border-bottom: 2px solid #ddd;
+  padding: 15px 10px;
+  text-transform: uppercase;
+}
+
+.table tbody tr td {
+  border: none;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #fff;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td {
+  background-color: rgba(101,198,187, 0.3);
+}

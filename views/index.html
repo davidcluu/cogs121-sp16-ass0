@@ -4,6 +4,9 @@
 <head>
     <title></title>
 
+    <!-- Material Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
     <!-- jQuery -->
     <script src="/js/jquery.min.js"></script>
 
@@ -13,38 +16,49 @@
 
     <!-- Custom CSS -->
     <link href="/css/global.css" rel="stylesheet">
+    <!-- Custom JS -->
+    <script src="/js/global.js"></script>
 </head>
 
 <body>
     <form class="message-form" action="/message" method="post">
-        <div class="input-group">
-            <input class="form-control form-name" type="text" name="email" placeholder="Email">
-            <span class="input-group-addon form-addon">
-                <i class="glyphicon glyphicon-envelope"></i>
-            </span>
+        <div class="input">
+            <label for="emailInput">Email</label>
+            <div class="error-message">
+                <span class="glyphicon glyphicon-alert"></span> Email must be valid (contain an @)
+            </div>
+            <input class="form-control form-name" id="emailInput" type="text" name="email">
         </div>
-        <textarea class="form-control form-message" name="content" placeholder="Content"></textarea>
-    	<input type="submit" value="Submit">
+        <div class="input">
+            <label for="messageInput">Content</label>
+            <div class="error-message">
+                <span class="glyphicon glyphicon-alert"></span> Content must not be empty
+            </div>
+            <textarea class="form-control form-message" id="messageInput" name="content"></textarea>
+        </div>
+    	<input class="button" id="submitButton" type="submit" value="Submit">
     </form>
     {{#if data}}
-    <h3>My Messages</h3>
-    <div class="table-responsive">
-        <table class="table table-condensed table-bordered">
-        	<thead>
-        		<th>Email</th>
-        		<th>Content</th>
-        		<th>Date</th>
-        	</thead>
-        	<tbody>
-        		{{#each data}}
-        		<tr>
-        			<td>{{email}}</td>
-        			<td>{{content}}</td>
-        			<td>{{created}}</td>
-        		</tr>
-        		{{/each}}
-        	</tbody>
-        </table>
+    <div class="message-area">
+        <h3>My Messages</h3>
+        <div class="table-responsive">
+            <table class="table table-condensed table-striped">
+            	<thead>
+            		<th>Email</th>
+            		<th>Content</th>
+            		<th>Date</th>
+            	</thead>
+            	<tbody>
+            		{{#each data}}
+            		<tr>
+            			<td>{{email}}</td>
+            			<td>{{content}}</td>
+            			<td>{{created}}</td>
+            		</tr>
+            		{{/each}}
+            	</tbody>
+            </table>
+        </div>
     </div>
     {{/if}}
 </body>
