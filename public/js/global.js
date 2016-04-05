@@ -73,7 +73,10 @@ function checkFormContents (e) {
 
   e.preventDefault();
 
-  if (checkEmailInput() || checkMessageInput()) {
+  var emailError = checkEmailInput();
+  var messageError = checkMessageInput();
+
+  if (emailError || messageError) {
     console.log("a");
     return;
   }
