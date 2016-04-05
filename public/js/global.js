@@ -29,7 +29,7 @@ function checkEmailInput () {
     $emailInput.css({
       'border-color': '#0f0'
     });
-    return true;
+    return false;
   }
   else {
     $emailInput.parent().addClass('error');
@@ -37,7 +37,7 @@ function checkEmailInput () {
     $emailInput.css({
       'border-color': '#f00'
     });
-    return false;
+    return true;
   }
 }
 
@@ -51,7 +51,7 @@ function checkMessageInput () {
     $messageInput.css({
       'border-color': '#0f0'
     });
-    return true;
+    return false;
   }
   else {
     $messageInput.parent().addClass('error');
@@ -59,7 +59,7 @@ function checkMessageInput () {
     $messageInput.css({
       'border-color': '#f00'
     });
-    return false;
+    return true;
   }
 }
 
@@ -74,9 +74,12 @@ function checkFormContents (e) {
   e.preventDefault();
 
   if (checkEmailInput() || checkMessageInput()) {
+    console.log("a");
     return;
   }
-
-  flag = true;
-  $(this).trigger('click');
+  else {
+    console.log("b");
+    flag = true;
+    $(this).trigger('click');
+  }
 }
